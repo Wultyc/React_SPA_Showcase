@@ -28,10 +28,10 @@ function useFetch<Type>(url: string) {
                      resHeaders[key] = val
                  })
 
-            await setData(resBody)
-            await setHeaders(resHeaders)
-            await setIsLoading(false)
-            await setErrors(null)
+            setData(resBody)
+            setHeaders(resHeaders)
+            setIsLoading(false)
+            setErrors(null)
         }
 
         setIsLoading(true)

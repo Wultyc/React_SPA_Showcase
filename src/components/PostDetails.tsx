@@ -33,7 +33,7 @@ export default function PostDetails() {
               <p className='fs-5 mb-4'>{post?.body}</p>
             </section>
           </article>
-          <PostComments />
+          <PostComments postId={postId}/>
         </>
       )}
 
