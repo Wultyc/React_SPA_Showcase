@@ -3,6 +3,7 @@ import CardAuthors from "./components/CardAuthors";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PostList from "./components/PostList";
+import PostDetails from "./components/PostDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Switch>
                 <Route path="/" exact> <PostList /> </Route>
                 <Route path="/page/:page"> <PostList/> </Route>
+                <Route path="/posts/:postId"> <PostDetails/> </Route>
               </Switch>
             </div>
             <div className="col-lg-4">
