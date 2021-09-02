@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react"
 
-function useFetch<Type>(url: string) {
+interface Params {
+    method: string,
+    headers: any,
+    body: any
+}
+
+function useFetch<Type>(url: string, params?: Params) {
 
     const [isLoading, setIsLoading] = useState(true)
     const [data, setData] = useState<Type>()
@@ -12,9 +18,13 @@ function useFetch<Type>(url: string) {
 
         const fetchData = async () => {
 
-            //await setIsLoading(true)
+            const res = await fetch(url, {
+                signal: abortCont.signal,
+                method: params?.method ?? "GET",
+                headers: params?.headers,
+                body: params?.body
 
-            const res = await fetch(url, { signal: abortCont.signal })
+            })
 
             if (!res.ok)
                 setErrors('Error fetching data from server')

@@ -21,7 +21,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "db": "npx json-server --watch data/db.json --port 3001",
-    "db-local":"node node_modules/json-server/lib/cli/bin.js --watch data/db.json --port 3001",
+    "db-local": "node node_modules/json-server/lib/cli/bin.js --watch data/db.json --port 3001",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

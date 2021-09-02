@@ -1,22 +1,26 @@
+import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import Comment from "../models/Comment";
+import NewCommentForm from "./PostNewCommentForm"
 
 interface Props {
   postId: string;
 }
 
 export default function PostComments({ postId }: Props) {
-  const commentsURL = `http://localhost:3001/posts/${postId}/comments`;
-
+  const [commentsURL, setCommentsURL] = useState(`http://localhost:3001/posts/${postId}/comments`)
   const { data: commentsList, isLoading, errors } = useFetch<Comment[]>(commentsURL);
 
-  console.log(commentsList);
+  const HandleUpdateComments = () => {
+    const updUrl = commentsURL.split("?")[0]
+    setCommentsURL(`${updUrl}?forceReload=${Math.random()}`)
+  }
 
   return (
     <section className='mb-5'>
       <div className='card bg-light'>
         <div className='card-body'>
-          
+          <NewCommentForm postId={postId} HandleUpdateComments={HandleUpdateComments}/>
           {isLoading && <p>Loading ...</p>}
           {commentsList?.map((comment) => (
                 <div className='d-flex mb-4' key={comment.id}>
