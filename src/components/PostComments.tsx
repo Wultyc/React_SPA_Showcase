@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function PostComments({ postId }: Props) {
-  const postsURL = `https://jsonplaceholder.typicode.com/posts/${postId}/comments`;
+  const postsURL = `http://localhost:3001/posts/${postId}/comments`;
 
   const { data: commentsList, isLoading, errors } = useFetch<Comment[]>(postsURL);
 

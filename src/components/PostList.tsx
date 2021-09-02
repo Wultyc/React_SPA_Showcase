@@ -20,8 +20,8 @@ export default function PostList() {
     const startPost = (currentPage - 1) * paginationConfig.increment
     const endPost = startPost + paginationConfig.increment
 
-    const postsURL = `https://jsonplaceholder.typicode.com/posts?_start=${startPost}&_end=${endPost}`
-    const usersURL = `https://jsonplaceholder.typicode.com/users`
+    const postsURL = `http://localhost:3001/posts?_start=${startPost}&_end=${endPost}`
+    const usersURL = `http://localhost:3001/users`
 
     const {data: postList, headers: postHeaders, isLoading, errors} = useFetch<Post[]>(postsURL)
     const {data: authorsList} = useFetch<User[]>(usersURL)

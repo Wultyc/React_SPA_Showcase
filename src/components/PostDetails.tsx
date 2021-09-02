@@ -9,10 +9,10 @@ interface Params {
 
 export default function PostDetails() {
   const { postId } = useParams<Params>();
-  const postURL = `https://jsonplaceholder.typicode.com/posts/${postId}`;
+  const postURL = `http://localhost:3001/posts/${postId}`;
   const { data: post, isLoading, errors } = useFetch<Post>(postURL);
 
-  const userURL = `https://jsonplaceholder.typicode.com/users/${post?.userId}`
+  const userURL = `http://localhost:3001/users/${post?.userId}`
   const {data: author} = useFetch<User>(userURL)
 
   return (
