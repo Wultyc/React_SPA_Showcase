@@ -6,9 +6,9 @@ interface Props {
 }
 
 export default function PostComments({ postId }: Props) {
-  const postsURL = `http://localhost:3001/posts/${postId}/comments`;
+  const commentsURL = `http://localhost:3001/posts/${postId}/comments`;
 
-  const { data: commentsList, isLoading, errors } = useFetch<Comment[]>(postsURL);
+  const { data: commentsList, isLoading, errors } = useFetch<Comment[]>(commentsURL);
 
   console.log(commentsList);
 
@@ -16,9 +16,7 @@ export default function PostComments({ postId }: Props) {
     <section className='mb-5'>
       <div className='card bg-light'>
         <div className='card-body'>
-          <form className='mb-4'>
-            <textarea className='form-control' rows={3} placeholder='Join the discussion and leave a comment!'></textarea>
-          </form>
+          
           {isLoading && <p>Loading ...</p>}
           {commentsList?.map((comment) => (
                 <div className='d-flex mb-4' key={comment.id}>
